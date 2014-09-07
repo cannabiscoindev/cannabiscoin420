@@ -1,0 +1,34 @@
+src/*.exe
+src/cannabiscoin
+src/cannabiscoind
+src/test_cannabiscoin
+.*.swp
+*.*~*
+*.bak
+*.rej
+*.orig
+*.o
+*.patch
+.cannabiscoin
+
+# Compilation and Qt preprocessor part
+*.qm
+Makefile
+cannabiscoin-qt
+cannabiscoin-Qt.app
+
+# Unit-tests
+Makefile.test
+cannabiscoin-qt_test
+
+# Resources cpp
+qrc_*.cpp
+
+# Qt creator
+*.pro.user
+
+# Mac specific
+.DS_Store
+build
+
+!src/leveldb*/Makefile
