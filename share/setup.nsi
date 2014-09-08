@@ -5,7 +5,7 @@ SetCompressor /SOLID lzma
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION 0.8.6.2
+!define VERSION 0.8.6.3
 !define COMPANY "CannabisCoin project"
 !define URL http://www.CannabisCoin.org/
 
@@ -63,8 +63,8 @@ ShowUninstDetails show
 Section -Main SEC0000
     SetOutPath $INSTDIR
     SetOverwrite on
-    File ../release/CannabisCoin-qt.exe
-    File /oname=COPYING.txt ../COPYING
+    File CannabisCoin-qt.exe
+    File /oname=COPYING.txt ..\COPYING
     SetOutPath $INSTDIR
     WriteRegStr HKCU "${REGKEY}\Components" Main 1
 SectionEnd
