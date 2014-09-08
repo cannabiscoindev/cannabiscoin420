@@ -329,7 +329,8 @@ SOURCES += src/qt/bitcoin.cpp \
 
 
 RESOURCES += src/qt/bitcoin.qrc \
-    src/qt/background.qrc
+    src/qt/background.qrc \
+    src/qt/res/images/logo.qrc
 
 FORMS += src/qt/forms/sendcoinsdialog.ui \
     src/qt/forms/coincontroldialog.ui \

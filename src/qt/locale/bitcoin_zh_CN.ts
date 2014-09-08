@@ -5,12 +5,12 @@
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
         <source>About CannabisCoin</source>
-        <translation>关于Hiro币</translation>
+        <translation>关于CANN币</translation>
     </message>
     <message>
         <location line="+39"/>
         <source>&lt;b&gt;CannabisCoin&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;Hiro币&lt;/b&gt;版本</translation>
+        <translation>&lt;b&gt;CANN币&lt;/b&gt;版本</translation>
     </message>
     <message>
         <location line="+57"/>
@@ -68,7 +68,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location filename="../addressbookpage.cpp" line="+63"/>
         <source>These are your CannabisCoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
-        <translation>这是您用来收款的Hiro币地址。为了标记不同的资金来源，建议为每个付款人保留不同的收款地址。</translation>
+        <translation>这是您用来收款的CANN币地址。为了标记不同的资金来源，建议为每个付款人保留不同的收款地址。</translation>
     </message>
     <message>
         <location filename="../forms/addressbookpage.ui" line="+14"/>
@@ -108,7 +108,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-44"/>
         <source>Verify a message to ensure it was signed with a specified CannabisCoin address</source>
-        <translation>验证消息，确保消息是由指定的Hiro币地址签名过的。</translation>
+        <translation>验证消息，确保消息是由指定的CANN币地址签名过的。</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -123,7 +123,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location filename="../addressbookpage.cpp" line="-5"/>
         <source>These are your CannabisCoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>这是您用来付款的Hiro币地址。在付款前，请总是核实付款金额和收款地址。</translation>
+        <translation>这是您用来付款的CANN币地址。在付款前，请总是核实付款金额和收款地址。</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -249,7 +249,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+1"/>
         <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR CannabisCoinS&lt;/b&gt;!</source>
-        <translation>警告：如果您加密了您的钱包，但是忘记了密码，你将会&lt;b&gt;丢失所有的Hiro币&lt;/b&gt;！</translation>
+        <translation>警告：如果您加密了您的钱包，但是忘记了密码，你将会&lt;b&gt;丢失所有的CANN币&lt;/b&gt;！</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -276,7 +276,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-56"/>
         <source>CannabisCoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your CannabisCoins from being stolen by malware infecting your computer.</source>
-        <translation>将关闭软件以完成加密过程。 请您谨记：钱包加密并不是万能的，电脑中毒，您的Hiro币还是有可能丢失。</translation>
+        <translation>将关闭软件以完成加密过程。 请您谨记：钱包加密并不是万能的，电脑中毒，您的CANN币还是有可能丢失。</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -375,7 +375,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+4"/>
         <source>Show information about CannabisCoin</source>
-        <translation>显示Hiro币的相关信息</translation>
+        <translation>显示CANN币的相关信息</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -420,7 +420,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-347"/>
         <source>Send coins to a CannabisCoin address</source>
-        <translation>向一个Hiro币地址发送Hiro币</translation>
+        <translation>向一个CANN币地址发送CANN币</translation>
     </message>
     <message>
         <location line="+49"/>
@@ -456,7 +456,7 @@ This product includes software developed by the OpenSSL Project for use in the O
         <location line="-165"/>
         <location line="+530"/>
         <source>CannabisCoin</source>
-        <translation>Hiro币</translation>
+        <translation>CANN币</translation>
     </message>
     <message>
         <location line="-530"/>
@@ -481,7 +481,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+22"/>
         <source>&amp;About CannabisCoin</source>
-        <translation>&amp;关于Hiro币</translation>
+        <translation>&amp;关于CANN币</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -501,12 +501,12 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+7"/>
         <source>Sign messages with your CannabisCoin addresses to prove you own them</source>
-        <translation>用Hiro币地址关联的私钥为消息签名，以证明您拥有这个Hiro币地址</translation>
+        <translation>用CANN币地址关联的私钥为消息签名，以证明您拥有这个CANN币地址</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Verify messages to ensure they were signed with specified CannabisCoin addresses</source>
-        <translation>校验消息，确保该消息是由指定的Hiro币地址所有者签名的</translation>
+        <translation>校验消息，确保该消息是由指定的CANN币地址所有者签名的</translation>
     </message>
     <message>
         <location line="+28"/>
@@ -537,12 +537,12 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+47"/>
         <source>CannabisCoin client</source>
-        <translation>Hiro币客户端</translation>
+        <translation>CANN币客户端</translation>
     </message>
     <message numerus="yes">
         <location line="+141"/>
         <source>%n active connection(s) to CannabisCoin network</source>
-        <translation><numerusform>到Hiro币网络的连接共有%n条</numerusform></translation>
+        <translation><numerusform>到CANN币网络的连接共有%n条</numerusform></translation>
     </message>
     <message>
         <location line="+22"/>
@@ -607,7 +607,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+70"/>
         <source>This transaction is over the size limit. You can still send it for a fee of %1, which goes to the nodes that process your transaction and helps to support the network. Do you want to pay the fee?</source>
-        <translation>该交易的字节数超标。您可以选择支付%1的交易费给处理您的交易的网络节点，有助于Hiro币网络的运行。您愿意支付这笔交易费用吗？</translation>
+        <translation>该交易的字节数超标。您可以选择支付%1的交易费给处理您的交易的网络节点，有助于CANN币网络的运行。您愿意支付这笔交易费用吗？</translation>
     </message>
     <message>
         <location line="-140"/>
@@ -657,7 +657,7 @@ Address: %4
         <location line="-23"/>
         <location line="+23"/>
         <source>URI can not be parsed! This can be caused by an invalid CannabisCoin address or malformed URI parameters.</source>
-        <translation>URI无法解析！原因可能是Hiro币地址不正确，或者URI参数错误。</translation>
+        <translation>URI无法解析！原因可能是CANN币地址不正确，或者URI参数错误。</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -738,7 +738,7 @@ Address: %4
     <message>
         <location line="-5"/>
         <source>The entered address &quot;%1&quot; is not a valid CannabisCoin address.</source>
-        <translation>您输入的 &quot;%1&quot; 不是合法的Hiro币地址.</translation>
+        <translation>您输入的 &quot;%1&quot; 不是合法的CANN币地址.</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -821,7 +821,7 @@ Address: %4
     <message>
         <location line="+31"/>
         <source>Automatically start CannabisCoin after logging in to the system.</source>
-        <translation>登录系统后自动开启Hiro币客户端</translation>
+        <translation>登录系统后自动开启CANN币客户端</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -846,7 +846,7 @@ Address: %4
     <message>
         <location line="+6"/>
         <source>Automatically open the CannabisCoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>自动在路由器中打开Hiro币端口。只有当您的路由器开启 UPnP 选项时此功能才有效。</translation>
+        <translation>自动在路由器中打开CANN币端口。只有当您的路由器开启 UPnP 选项时此功能才有效。</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -856,7 +856,7 @@ Address: %4
     <message>
         <location line="+7"/>
         <source>Connect to the CannabisCoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
-        <translation>通过代理服务器连接Hiro币网络(例如：通过Tor连接)</translation>
+        <translation>通过代理服务器连接CANN币网络(例如：通过Tor连接)</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -936,22 +936,22 @@ Address: %4
     <message>
         <location line="+11"/>
         <source>&amp;Unit to show amounts in:</source>
-        <translation>&amp;Hiro币金额单位:</translation>
+        <translation>&amp;CANN币金额单位:</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
-        <translation>选择Hiro币单位。</translation>
+        <translation>选择CANN币单位。</translation>
     </message>
     <message>
         <location line="+9"/>
         <source>Whether to show CannabisCoin addresses in the transaction list or not.</source>
-        <translation>否需要在交易清单中显示Hiro币地址。</translation>
+        <translation>否需要在交易清单中显示CANN币地址。</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>&amp;Display addresses in transaction list</source>
-        <translation>在交易清单中&amp;显示Hiro币地址</translation>
+        <translation>在交易清单中&amp;显示CANN币地址</translation>
     </message>
     <message>
         <location line="+71"/>
@@ -1017,7 +1017,7 @@ Address: %4
         <location line="+50"/>
         <location line="+166"/>
         <source>The displayed information may be out of date. Your wallet automatically synchronizes with the CannabisCoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>现在显示的消息可能是过期的. 在连接上Hiro币网络节点后，您的钱包将自动与网络同步，但是这个过程还没有完成.</translation>
+        <translation>现在显示的消息可能是过期的. 在连接上CANN币网络节点后，您的钱包将自动与网络同步，但是这个过程还没有完成.</translation>
     </message>
     <message>
         <location line="-124"/>
@@ -1071,7 +1071,7 @@ Address: %4
     <message>
         <location filename="../paymentserver.cpp" line="+107"/>
         <source>Cannot start CannabisCoin: click-to-pay handler</source>
-        <translation>暂时无法启动Hiro币：点击支付功能</translation>
+        <translation>暂时无法启动CANN币：点击支付功能</translation>
     </message>
 </context>
 <context>
@@ -1186,7 +1186,7 @@ Address: %4
     <message>
         <location line="+23"/>
         <source>On testnet</source>
-        <translation>当前为Hiro币测试网络</translation>
+        <translation>当前为CANN币测试网络</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -1221,7 +1221,7 @@ Address: %4
     <message>
         <location line="+7"/>
         <source>Show the CannabisCoin-Qt help message to get a list with possible CannabisCoin command-line options.</source>
-        <translation>显示Hiro币命令行选项帮助信息</translation>
+        <translation>显示CANN币命令行选项帮助信息</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1241,12 +1241,12 @@ Address: %4
     <message>
         <location line="-104"/>
         <source>CannabisCoin - Debug window</source>
-        <translation>Hiro币 - 调试窗口</translation>
+        <translation>CANN币 - 调试窗口</translation>
     </message>
     <message>
         <location line="+25"/>
         <source>CannabisCoin Core</source>
-        <translation>Hiro币核心</translation>
+        <translation>CANN币核心</translation>
     </message>
     <message>
         <location line="+279"/>
@@ -1386,7 +1386,7 @@ Address: %4
     <message>
         <location line="+5"/>
         <source>Error: The transaction was rejected. This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>错误: 交易被拒绝. 如果您使用的是备份钱包，可能存在两个钱包不同步的情况，另一个钱包中的Hiro币已经被使用，但本地的这个钱包尚没有记录。</translation>
+        <translation>错误: 交易被拒绝. 如果您使用的是备份钱包，可能存在两个钱包不同步的情况，另一个钱包中的CANN币已经被使用，但本地的这个钱包尚没有记录。</translation>
     </message>
 </context>
 <context>
@@ -1449,8 +1449,8 @@ Address: %4
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a Hiro币 address (e.g. H7QEPyCg1Yv3UZUALDha9bNYXuYbfMe9Lp)</source>
-        <translation>请输入Hiro币地址 (例如: H7QEPyCg1Yv3UZUALDha9bNYXuYbfMe9Lp)</translation>
+        <source>Enter a CANN币 address (e.g. H7QEPyCg1Yv3UZUALDha9bNYXuYbfMe9Lp)</source>
+        <translation>请输入CANN币地址 (例如: H7QEPyCg1Yv3UZUALDha9bNYXuYbfMe9Lp)</translation>
     </message>
 </context>
 <context>
@@ -1551,7 +1551,7 @@ Address: %4
     <message>
         <location line="+40"/>
         <source>Verify the message to ensure it was signed with the specified CannabisCoin address</source>
-        <translation>验证消息，确保消息是由指定的Hiro币地址签名过的。</translation>
+        <translation>验证消息，确保消息是由指定的CANN币地址签名过的。</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1567,7 +1567,7 @@ Address: %4
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
         <source>Enter a CannabisCoin address (e.g. H7QEPyCg1Yv3UZUALDha9bNYXuYbfMe9Lp)</source>
-        <translation>请输入Hiro币地址 (例如: H7QEPyCg1Yv3UZUALDha9bNYXuYbfMe9Lp)</translation>
+        <translation>请输入CANN币地址 (例如: H7QEPyCg1Yv3UZUALDha9bNYXuYbfMe9Lp)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -1577,7 +1577,7 @@ Address: %4
     <message>
         <location line="+3"/>
         <source>Enter CannabisCoin signature</source>
-        <translation>输入Hiro币签名</translation>
+        <translation>输入CANN币签名</translation>
     </message>
     <message>
         <location line="+82"/>
@@ -1785,7 +1785,7 @@ Address: %4
     <message>
         <location line="+3"/>
         <source>Generated coins must mature 120 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>新挖出的Hiro币必须等确120个确认才能使用。您生产出的数据块，将被广播到全网并添加到数据块链。如果入链失败，状态将变为“未被接受”，意味着您的数据块竞争失败，挖出的Hiro币将不能使用。当某个节点先于你几秒生产出新的数据块，这种情况会偶尔发生。</translation>
+        <translation>新挖出的CANN币必须等确120个确认才能使用。您生产出的数据块，将被广播到全网并添加到数据块链。如果入链失败，状态将变为“未被接受”，意味着您的数据块竞争失败，挖出的CANN币将不能使用。当某个节点先于你几秒生产出新的数据块，这种情况会偶尔发生。</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -1946,7 +1946,7 @@ Address: %4
     <message>
         <location line="+2"/>
         <source>Date and time that the transaction was received.</source>
-        <translation>接收Hiro币的时间</translation>
+        <translation>接收CANN币的时间</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -2138,7 +2138,7 @@ Address: %4
     <message>
         <location filename="../walletmodel.cpp" line="+193"/>
         <source>Send Coins</source>
-        <translation>发送Hiro币</translation>
+        <translation>发送CANN币</translation>
     </message>
 </context>
 <context>
@@ -2189,7 +2189,7 @@ Address: %4
     <message>
         <location filename="../bitcoinstrings.cpp" line="+94"/>
         <source>CannabisCoin version</source>
-        <translation>Hiro币版本</translation>
+        <translation>CANN币版本</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -2317,7 +2317,7 @@ rpcpassword=%s
 The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;Hiro币 Alert&quot; admin@foo.com
+for example: alertnotify=echo %%s | mail -s &quot;CANN币 Alert&quot; admin@foo.com
 </source>
         <translation>%s, 您必须在配置文件设置rpcpassword:
  %s
@@ -2328,7 +2328,7 @@ rpcpassword=%s
 用户名和密码 必! 须! 不一样。
 如果配置文件不存在，请自行建立一个只有所有者拥有只读权限的文件。
 推荐您开启提示通知以便收到错误通知，
-像这样: alertnotify=echo %%s | mail -s &quot;Hiro币 Alert&quot; admin@foo.com
+像这样: alertnotify=echo %%s | mail -s &quot;CANN币 Alert&quot; admin@foo.com
 </translation>
     </message>
     <message>
@@ -2349,7 +2349,7 @@ rpcpassword=%s
     <message>
         <location line="+3"/>
         <source>Error: The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>错误：该交易被拒绝！发生这种错误的原因可能是：钱包中的Hiro币已经被用掉，有可能您复制了wallet.dat钱包文件，然后用复制的钱包文件支付了Hiro币，但是这个钱包文件中没有记录。</translation>
+        <translation>错误：该交易被拒绝！发生这种错误的原因可能是：钱包中的CANN币已经被用掉，有可能您复制了wallet.dat钱包文件，然后用复制的钱包文件支付了CANN币，但是这个钱包文件中没有记录。</translation>
     </message>
     <message>
         <location line="+4"/>
@@ -2389,7 +2389,7 @@ rpcpassword=%s
     <message>
         <location line="+3"/>
         <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong CannabisCoin will not work properly.</source>
-        <translation>警告：请检查电脑的日期时间设置是否正确！时间错误可能会导致Hiro币客户端运行异常。</translation>
+        <translation>警告：请检查电脑的日期时间设置是否正确！时间错误可能会导致CANN币客户端运行异常。</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2639,7 +2639,7 @@ rpcpassword=%s
     <message>
         <location line="+5"/>
         <source>SSL options: (see the CannabisCoin Wiki for SSL setup instructions)</source>
-        <translation>SSL选项：(参见Hiro币 Wiki关于SSL设置栏目)</translation>
+        <translation>SSL选项：(参见CANN币 Wiki关于SSL设置栏目)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2839,12 +2839,12 @@ rpcpassword=%s
     <message>
         <location line="+1"/>
         <source>Error loading wallet.dat: Wallet requires newer version of CannabisCoin</source>
-        <translation>wallet.dat钱包文件加载错误：请升级到最新Hiro币客户端</translation>
+        <translation>wallet.dat钱包文件加载错误：请升级到最新CANN币客户端</translation>
     </message>
     <message>
         <location line="+93"/>
         <source>Wallet needed to be rewritten: restart CannabisCoin to complete</source>
-        <translation>钱包文件需要重写：请退出并重新启动Hiro币客户端</translation>
+        <translation>钱包文件需要重写：请退出并重新启动CANN币客户端</translation>
     </message>
     <message>
         <location line="-95"/>
@@ -2904,7 +2904,7 @@ rpcpassword=%s
     <message>
         <location line="-25"/>
         <source>Unable to bind to %s on this computer. CannabisCoin is probably already running.</source>
-        <translation>无法在本机绑定 %s 端口 . Hiro币客户端软件可能已经在运行.</translation>
+        <translation>无法在本机绑定 %s 端口 . CANN币客户端软件可能已经在运行.</translation>
     </message>
     <message>
         <location line="+64"/>

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>573</width>
-    <height>342</height>
+    <height>312</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -126,7 +126,7 @@ background: transparent;</string>
                <string>Your current balance</string>
               </property>
               <property name="text">
-               <string notr="true">0 420</string>
+               <string notr="true">0 CANN</string>
               </property>
               <property name="textInteractionFlags">
                <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -155,7 +155,7 @@ background: transparent;</string>
                <string>Total of transactions that have yet to be confirmed, and do not yet count toward the current balance</string>
               </property>
               <property name="text">
-               <string notr="true">0 420</string>
+               <string notr="true">0 CANN</string>
               </property>
               <property name="textInteractionFlags">
                <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -181,7 +181,7 @@ background: transparent;</string>
                <string>Mined balance that has not yet matured</string>
               </property>
               <property name="text">
-               <string notr="true">0 420</string>
+               <string notr="true">0 CANN</string>
               </property>
               <property name="textInteractionFlags">
                <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -206,13 +206,13 @@ background: transparent;</string>
          </property>
         </spacer>
        </item>
-       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+       <item alignment="Qt::AlignHCenter">
         <widget class="QLabel" name="label_2">
          <property name="text">
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap>../res/icons/bitcoin_testnet.png</pixmap>
+          <pixmap resource="../bitcoin.qrc">:/images/splash_testnet</pixmap>
          </property>
         </widget>
        </item>
@@ -323,6 +323,8 @@ background: transparent;</string>
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../bitcoin.qrc"/>
+ </resources>
  <connections/>
 </ui>
