@@ -212,7 +212,7 @@ background: transparent;</string>
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="../bitcoin.qrc">:/images/splash_testnet</pixmap>
+          <pixmap resource="../bitcoin.qrc">:/images/main_background</pixmap>
          </property>
         </widget>
        </item>
