@@ -7,7 +7,7 @@ SetCompressor /SOLID lzma
 !define REGKEY "SOFTWARE\$(^Name)"
 !define VERSION 0.8.6.3
 !define COMPANY "CannabisCoin project"
-!define URL http://www.CannabisCoin.org/
+!define URL http://www.CannabisCoin.net/
 
 # MUI Symbol Definitions
 !define MUI_ICON "pixmaps\bitcoin.ico"
