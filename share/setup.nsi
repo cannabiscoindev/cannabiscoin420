@@ -14,7 +14,7 @@ SetCompressor /SOLID lzma
 !define MUI_WELCOMEFINISHPAGE_BITMAP "pixmaps\nsis-wizard.bmp"
 !define MUI_HEADERIMAGE
 !define MUI_HEADERIMAGE_RIGHT
-!define MUI_HEADERIMAGE_BITMAP
+!define MUI_HEADERIMAGE_BITMAP "pixmaps\nsis-header.bmp"
 !define MUI_FINISHPAGE_NOAUTOCLOSE
 !define MUI_STARTMENUPAGE_REGISTRY_ROOT HKLM
 !define MUI_STARTMENUPAGE_REGISTRY_KEY ${REGKEY}
@@ -23,7 +23,7 @@ SetCompressor /SOLID lzma
 !define MUI_FINISHPAGE_RUN $INSTDIR\CannabisCoin-qt.exe
 !define MUI_FINISHPAGE_RUN_TEXT "Launch CannabisCoin"
 !define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\modern-uninstall.ico"
-!define MUI_UNWELCOMEFINISHPAGE_BITMAP
+!define MUI_UNWELCOMEFINISHPAGE_BITMAP "pixmaps\nsis-wizard.bmp"
 !define MUI_UNFINISHPAGE_NOAUTOCLOSE
 
 # Included files
