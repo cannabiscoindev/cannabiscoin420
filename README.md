@@ -26,8 +26,8 @@ Cannabis is potent medicine courtesy of high amounts of CBD, medicinal terpenes,
 Cannabis Coin Details:
 ----------------------
 Algorithm = X11
-Maximum number of produced Cannabis Coins = 420,000,000 Coins
-Cannabis Coin THC rewards per block = 420 Coins
+Maximum number of produced Cannabis Coins = 106,000,000 Coins
+Cannabis Coin CANN rewards per block = 105 Coins
 Target per block = 42 Seconds
 Halving = Every 100,000 Blocks
 Wallet Addresses will start with “C” for CANNABIS!
