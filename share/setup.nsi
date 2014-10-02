@@ -41,6 +41,9 @@ Var StartMenuGroup
 !insertmacro MUI_UNPAGE_INSTFILES
 !insertmacro MUI_PAGE_FINISH
 
+# Set language
+!insertmacro MUI_LANGUAGE "English"
+
 # Installer attributes
 OutFile CannabisCoin-${VERSION}-setup.exe
 InstallDir $PROGRAMFILES\CannabisCoin
