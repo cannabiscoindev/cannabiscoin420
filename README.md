@@ -1,7 +1,7 @@
 What is CannabisCoin?
 ---------------------
 
-Cannabis Coin is a peer-to-peer Internet digital currency that enables instant payments to anyone in the world.
+Cannabis Coin (CANN) is a peer-to-peer Internet digital currency that enables instant payments to anyone in the world.
 
 It is based on the Bitcoin protocol but differs from Bitcoin in that it can be efficiently mined with consumer-grade hardware.
 
