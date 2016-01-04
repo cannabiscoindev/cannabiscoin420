@@ -8,7 +8,7 @@
 #include "checkpoints.h"
 
 #include "main.h"
-#include "unit256.h"
+#include "uint256.h"
 
 namespace Checkpoints
 {
@@ -55,8 +55,8 @@ namespace Checkpoints
         (  979200, uint256("0x000000006860a93401d32538d1454962b6f64834f005d9b3027e770b49a39bbc"))
         (  1036800, uint256("0x00000000a9a5fa171cc3cd81b46e8773d845153310e1a51c63e821537e751395"))
         (  1094400, uint256("0x000000002fac5cfff0c6efb1641662547c0d9046f455236beb8f094a4599dbee"))
-        (  1121000, unit256("0x000000012b18631c9d5d90e3c5a32655f63ae1100ff8cafbde184521deba0960"))
-        (  1135050, unit256("0x000000014d3dfb1e1a6cfa86d00baf64acd273da8536badc9aaf4f090a9b77af"))
+        (  1121000, uint256("0x000000012b18631c9d5d90e3c5a32655f63ae1100ff8cafbde184521deba0960"))
+        (  1135050, uint256("0x000000014d3dfb1e1a6cfa86d00baf64acd273da8536badc9aaf4f090a9b77af"))
         ;
     static const CCheckpointData data = {
         &mapCheckpoints,
@@ -66,7 +66,7 @@ namespace Checkpoints
         2778.0     // * estimated number of transactions per day after checkpoint
     };
 
-    static MapCheckpoints mapCheckpointsTestnet = 
+    static MapCheckpoints mapCheckpointsTestnet =
         boost::assign::map_list_of
         (   0, uint256("0x00000a10f7ce671e773330376ce892a6c0b93fbc05553ebbf659b11e3bf9188d"))
         ;
@@ -156,7 +156,7 @@ namespace Checkpoints
         }
         return NULL;
     }
-	
+
 	uint256 GetLatestHardenedCheckpoint()
     {
         const MapCheckpoints& checkpoints = *Checkpoints().mapCheckpoints;
