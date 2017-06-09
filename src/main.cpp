@@ -923,7 +923,12 @@ int CMerkleTx::GetBlocksToMaturity() const
 {
     if (!IsCoinBase())
         return 0;
-    return max(0, (COINBASE_MATURITY+20) - GetDepthInMainChain());
+    
+    if ((!fTestNet && nBestHeight < nForkOne) || (fTestNet && nBestHeight < 1500)) {
+        return max(0, (COINBASE_MATURITY + BASE_MATURITY_OFFSET) - GetDepthInMainChain());
+    } else {
+        return max(0, (COINBASE_MATURITY_FORKONE + BASE_MATURITY_OFFSET_FORKONE) - GetDepthInMainChain());     
+    }
 }
 
 
@@ -1067,20 +1072,24 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
 {
     int64 nSubsidy = 420 * COIN;
 
-    if (nHeight == 1)
-    {
+    if (nHeight == 1) {
        nSubsidy = 21882000 * COIN;
        return nSubsidy + nFees;
-    }
-
-    else if (nHeight <= 51)
-    {
+    } else if (nHeight <= 51) {
        nSubsidy = 0 * COIN;
        return nSubsidy + nFees;
     }
-
-    nSubsidy >>= (nHeight / 100000);
-
+    
+    if ((!fTestNet && nHeight < nForkOne) || (fTestNet && nHeight < 1500)) {
+      nSubsidy >>= (nHeight / 100000);
+    } else {
+      // Hard fork one. Fix inflation model. 70 coins per block.
+      nSubsidy = 70 * COIN;
+      
+      // Halving when half of total coins are minted then every four years
+      nSubsidy >>= (nHeight - 969725) / 3000000;
+    }
+    
     return nSubsidy + nFees;
 }
 
@@ -1521,8 +1530,14 @@ bool CTransaction::CheckInputs(CValidationState &state, CCoinsViewCache &inputs,
 
             // If prev is coinbase, check that it's matured
             if (coins.IsCoinBase()) {
+              if ((!fTestNet && nBestHeight < nForkOne) || (fTestNet && nBestHeight < 1500)) {
                 if (nSpendHeight - coins.nHeight < COINBASE_MATURITY)
                     return state.Invalid(error("CheckInputs() : tried to spend coinbase at depth %d", nSpendHeight - coins.nHeight));
+              } else {
+                if (nSpendHeight - coins.nHeight < COINBASE_MATURITY_FORKONE)
+                    return state.Invalid(error("CheckInputs() : tried to spend coinbase at depth %d", nSpendHeight - coins.nHeight));
+              }
+                
             }
 
             // Check for negative or overflow input values

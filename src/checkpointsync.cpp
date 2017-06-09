@@ -367,7 +367,14 @@ bool IsMatureSyncCheckpoint()
     // sync-checkpoint should always be accepted block
     assert(mapBlockIndex.count(hashSyncCheckpoint));
     const CBlockIndex* pindexSync = mapBlockIndex[hashSyncCheckpoint];
-    return (nBestHeight >= pindexSync->nHeight + COINBASE_MATURITY);
+    
+    printf("CheckPointSync: nBestHeight = %d\n", nBestHeight);
+    
+    if ((!fTestNet && nBestHeight < nForkOne) || (fTestNet && nBestHeight < 1500)) {
+        return (nBestHeight >= pindexSync->nHeight + COINBASE_MATURITY);
+    } else {
+        return (nBestHeight >= pindexSync->nHeight + COINBASE_MATURITY_FORKONE);
+    }
 }
 
 // Is the sync-checkpoint too old?
