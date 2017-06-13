@@ -58,6 +58,10 @@ static const int64 MAX_MONEY = 420000000 * COIN;
 inline bool MoneyRange(int64 nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 /** Coinbase transaction outputs can only be spent after this number of new blocks (network rule) */
 static const int COINBASE_MATURITY = 30;
+static const int COINBASE_MATURITY_FORKONE = 100;
+/** Offset for the above to allow safe network propagation, in blocks (confirmations) */
+static const int BASE_MATURITY_OFFSET = 20;
+static const int BASE_MATURITY_OFFSET_FORKONE = 1;
 /** Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp. */
 static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov  5 00:53:20 1985 UTC
 /** Maximum number of script-checking threads allowed */
@@ -68,14 +72,10 @@ static const int fHaveUPnP = true;
 static const int fHaveUPnP = false;
 #endif
 
+// Hard fork data
+const int nForkOne = 2282000;
 
 extern CScript COINBASE_FLAGS;
-
-
-
-
-
-
 extern CCriticalSection cs_main;
 extern std::map<uint256, CBlockIndex*> mapBlockIndex;
 extern std::set<CBlockIndex*, CBlockIndexWorkComparator> setBlockIndexValid;

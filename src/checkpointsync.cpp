@@ -77,8 +77,8 @@ using namespace std;
 
 
 // ppcoin: sync-checkpoint master key
-const std::string CSyncCheckpoint::strMainPubKey = "0420b01e616c691a7884b2d4ef23fac412e8dbeadc49ca6e4e37a0c297d481243f0eda4070d5dbfa0a590908eb8557e798219af5ad0e18ff5b23cad1542e2ab105";
-const std::string CSyncCheckpoint::strTestPubKey = "042df43b2fd752560d53ab45f5b128d7a64d6e040778ef31dc1e72c7c2cff9d1ae6a2acd5a31c48b4b5b8dfdf8b77d64b7fe00795948d6d6fa221ceb23b02529d9";
+const std::string CSyncCheckpoint::strMainPubKey = "044649c4dfdddb22f2cf205967103c33bc1b445b48704bdac9f4fe17d695aa5f3b4bb024e4fd5fcc66c5987b618fe65777df2df990b273964f934b07fb64bd2835";
+const std::string CSyncCheckpoint::strTestPubKey = "048dc3106fba17f0bcefb289f14a8e248e210ae6f96cc2e512b84ba88f9bc08669078a9e4d0144d6573d035a62d84224f380427d2cbdb763da56aeac6cf50b13e3";
 std::string CSyncCheckpoint::strMasterPrivKey = "";
 
 
@@ -367,7 +367,14 @@ bool IsMatureSyncCheckpoint()
     // sync-checkpoint should always be accepted block
     assert(mapBlockIndex.count(hashSyncCheckpoint));
     const CBlockIndex* pindexSync = mapBlockIndex[hashSyncCheckpoint];
-    return (nBestHeight >= pindexSync->nHeight + COINBASE_MATURITY);
+    
+    printf("CheckPointSync: nBestHeight = %d\n", nBestHeight);
+    
+    if ((!fTestNet && nBestHeight < nForkOne) || (fTestNet && nBestHeight < 1500)) {
+        return (nBestHeight >= pindexSync->nHeight + COINBASE_MATURITY);
+    } else {
+        return (nBestHeight >= pindexSync->nHeight + COINBASE_MATURITY_FORKONE);
+    }
 }
 
 // Is the sync-checkpoint too old?

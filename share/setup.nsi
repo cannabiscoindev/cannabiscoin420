@@ -5,9 +5,9 @@ SetCompressor /SOLID lzma
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION 0.8.6.3
+!define VERSION 0.8.7.0
 !define COMPANY "CannabisCoin project"
-!define URL http://www.CannabisCoin.net/
+!define URL http://www.cannabiscoin.net/
 
 # MUI Symbol Definitions
 !define MUI_ICON "pixmaps\bitcoin.ico"
@@ -15,7 +15,6 @@ SetCompressor /SOLID lzma
 !define MUI_HEADERIMAGE
 !define MUI_HEADERIMAGE_RIGHT
 !define MUI_HEADERIMAGE_BITMAP "pixmaps\nsis-header.bmp"
-!define MUI_FINISHPAGE_NOAUTOCLOSE
 !define MUI_STARTMENUPAGE_REGISTRY_ROOT HKLM
 !define MUI_STARTMENUPAGE_REGISTRY_KEY ${REGKEY}
 !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME StartMenuGroup
@@ -41,9 +40,6 @@ Var StartMenuGroup
 !insertmacro MUI_UNPAGE_INSTFILES
 !insertmacro MUI_PAGE_FINISH
 
-# Set language
-!insertmacro MUI_LANGUAGE "English"
-
 # Installer attributes
 OutFile CannabisCoin-${VERSION}-setup.exe
 InstallDir $PROGRAMFILES\CannabisCoin
@@ -66,7 +62,7 @@ ShowUninstDetails show
 Section -Main SEC0000
     SetOutPath $INSTDIR
     SetOverwrite on
-    File CannabisCoin-qt.exe
+    File ..\release\CannabisCoin-qt.exe
     File /oname=COPYING.txt ..\COPYING
     SetOutPath $INSTDIR
     WriteRegStr HKCU "${REGKEY}\Components" Main 1

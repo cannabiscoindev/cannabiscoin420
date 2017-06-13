@@ -2,6 +2,12 @@ src/*.exe
 src/cannabiscoin
 src/cannabiscoind
 src/test_cannabiscoin
+src/qt/locale/*.qm
+release/*
+debug/*
+*.Debug
+*.Release
+cannabiscoin-qt_plugin_import.cpp
 .*.swp
 *.*~*
 *.bak
