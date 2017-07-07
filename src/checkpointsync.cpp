@@ -139,8 +139,7 @@ bool ValidateSyncCheckpoint(uint256 hashCheckpoint)
             return error("ValidateSyncCheckpoint: pprev2 null - block index structure failure");
     if (pindex->GetBlockHash() != hashSyncCheckpoint)
     {
-        hashInvalidCheckpoint = hashCheckpoint;
-        return error("ValidateSyncCheckpoint: new sync-checkpoint %s is not a descendant of current sync-checkpoint %s", hashCheckpoint.ToString().c_str(), hashSyncCheckpoint.ToString().c_str());
+        printf("ValidateSyncCheckpoint: new sync-checkpoint %s is not a descendant of current sync-checkpoint %s\n", hashCheckpoint.ToString().c_str(), hashSyncCheckpoint.ToString().c_str());
     }
     return true;
 }

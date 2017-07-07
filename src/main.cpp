@@ -2300,9 +2300,9 @@ bool CBlock::AcceptBlock(CValidationState &state, CDiskBlockPos *dbp)
             return state.DoS(100, error("AcceptBlock() : rejected by checkpoint lock-in at %d", nHeight));
 
 		// Check that the block satisfies synchronized checkpoint
-        if (IsSyncCheckpointEnforced() // checkpoint enforce mode
-            && !CheckSyncCheckpoint(hash, pindexPrev))
-            return error("AcceptBlock() : rejected by synchronized checkpoint");
+        // if (IsSyncCheckpointEnforced() // checkpoint enforce mode
+        //    && !CheckSyncCheckpoint(hash, pindexPrev))
+        //    return error("AcceptBlock() : rejected by synchronized checkpoint");
 			
         // Reject block.nVersion=1 blocks when 95% (75% on testnet) of the network has upgraded:
         if (nVersion < 2)
@@ -2388,15 +2388,15 @@ bool ProcessBlock(CValidationState &state, CNode* pfrom, CBlock* pblock, CDiskBl
     if (!pblock->CheckBlock(state))
         return error("ProcessBlock() : CheckBlock FAILED");
 
-    CBlockIndex* pcheckpoint = Checkpoints::GetLastCheckpoint(mapBlockIndex);
-    if (pcheckpoint && pblock->hashPrevBlock != hashBestChain)
-    {
+    //CBlockIndex* pcheckpoint = Checkpoints::GetLastCheckpoint(mapBlockIndex);
+    //if (pcheckpoint && pblock->hashPrevBlock != hashBestChain)
+    //{
 
-        if((pblock->GetBlockTime() - pcheckpoint->nTime) < 0) {
-            if(pfrom) pfrom->Misbehaving(100);
-            return error("ProcessBlock() : block has a time stamp of %u before the last checkpoint of %u", pblock->GetBlockTime(), pcheckpoint->nTime);
-        }
-    }
+    //    if((pblock->GetBlockTime() - pcheckpoint->nTime) < 0) {
+    //        if(pfrom) pfrom->Misbehaving(100);
+    //        return error("ProcessBlock() : block has a time stamp of %u before the last checkpoint of %u", pblock->GetBlockTime(), pcheckpoint->nTime);
+    //    }
+    //}
 
 	// Ask for pending sync-checkpoint if any
     if (!IsInitialBlockDownload())
