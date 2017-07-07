@@ -87,7 +87,6 @@ uint256 hashSyncCheckpoint = 0;
 uint256 hashPendingCheckpoint = 0;
 CSyncCheckpoint checkpointMessage;
 CSyncCheckpoint checkpointMessagePending;
-uint256 hashInvalidCheckpoint = 0;
 CCriticalSection cs_hashSyncCheckpoint;
 std::string strCheckpointWarning;
 
@@ -179,7 +178,6 @@ bool AcceptPendingSyncCheckpoint()
             CValidationState state;
             if (!SetBestChain(state, pindexCheckpoint))
             {
-                hashInvalidCheckpoint = hashPendingCheckpoint;
                 return error("AcceptPendingSyncCheckpoint: SetBestChain failed for sync checkpoint %s", hashPendingCheckpoint.ToString().c_str());
             }
         }
@@ -442,7 +440,6 @@ bool CSyncCheckpoint::ProcessSyncCheckpoint(CNode* pfrom)
         CValidationState state;
         if (!SetBestChain(state, pindexCheckpoint))
         {
-            hashInvalidCheckpoint = hashCheckpoint;
             return error("ProcessSyncCheckpoint: SetBestChain failed for sync checkpoint %s", hashCheckpoint.ToString().c_str());
         }
     }

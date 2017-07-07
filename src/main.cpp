@@ -3172,13 +3172,6 @@ string GetWarnings(string strFor)
         strStatusBar = strRPC = _("Warning: Displayed transactions may not be correct! You may need to upgrade, or other nodes may need to upgrade.");
     }
 
-	// If detected invalid checkpoint enter safe mode
-    if (hashInvalidCheckpoint != 0)
-    {
-        nPriority = 3000;
-        strStatusBar = strRPC = "WARNING: Inconsistent checkpoint found! Stop enforcing checkpoints and notify developers to resolve the issue.";
-    }
-
     // Alerts
     {
         LOCK(cs_mapAlerts);
