@@ -8,8 +8,6 @@
 #include "net.h"
 #include "util.h"
 
-#define CHECKPOINT_MAX_SPAN (60 * 60 * 4) // max 4 hours before latest block
-
 class uint256;
 class CBlock;
 class CBlockIndex;
@@ -18,23 +16,16 @@ class CSyncCheckpoint;
 extern uint256 hashSyncCheckpoint;
 extern CSyncCheckpoint checkpointMessage;
 extern CCriticalSection cs_hashSyncCheckpoint;
-extern std::string strCheckpointWarning;
 
-CBlockIndex* GetLastSyncCheckpoint();
 bool WriteSyncCheckpoint(const uint256& hashCheckpoint);
-bool IsSyncCheckpointEnforced();
 bool AcceptPendingSyncCheckpoint();
 uint256 AutoSelectSyncCheckpoint();
 bool CheckSyncCheckpoint(const uint256& hashBlock, const CBlockIndex* pindexPrev);
-bool WantedByPendingSyncCheckpoint(uint256 hashBlock);
 bool ResetSyncCheckpoint();
 void AskForPendingSyncCheckpoint(CNode* pfrom);
 bool CheckCheckpointPubKey();
 bool SetCheckpointPrivKey(std::string strPrivKey);
 bool SendSyncCheckpoint(uint256 hashCheckpoint);
-bool IsMatureSyncCheckpoint();
-bool IsSyncCheckpointTooOld(unsigned int nSeconds);
-uint256 WantedByOrphan(const CBlock* pblockOrphan);
 
 // Synchronized checkpoint (introduced first in ppcoin)
 class CUnsignedSyncCheckpoint
