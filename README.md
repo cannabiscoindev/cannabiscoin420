@@ -45,6 +45,3 @@ Twitter Page https://twitter.com/CannabisCoins CannabisCoin
 Exchange https://exchange.cannabiscoin.net
 CannabisCoin on Youtube http://www.youtube.com/user/CannabisCoin
 Reddit subreddit http://www.reddit.com/r/cannabiscoins
-
----------------------
-Latest Bootstrap (MAY/2018)
