@@ -48,5 +48,4 @@ Reddit subreddit http://www.reddit.com/r/cannabiscoins
 
 Latest Bootstrap File: (May 2018)
 ----------------------
-https://mega.nz/#!cghlnZqZ
-
+https://mega.nz/#!cghlnZqZ!cEFcAGqievry3f6vbX66GORdU6ahUiLXDTNThX_2QN8
