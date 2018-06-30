@@ -208,6 +208,9 @@ static const CRPCCommand vRPCCommands[] =
     { "getaddednodeinfo",       &getaddednodeinfo,       true,      true,       false },
     { "getdifficulty",          &getdifficulty,          true,      false,      false },
     { "getnetworkhashps",       &getnetworkhashps,       true,      false,      false },
+    { "getgenerate",            &getgenerate,            true,      false,      false },
+    { "setgenerate",            &setgenerate,            true,      false,      true },
+    { "gethashespersec",        &gethashespersec,        true,      false,      false },
     { "getinfo",                &getinfo,                true,      false,      false },
     { "getmininginfo",          &getmininginfo,          true,      false,      false },
     { "getnewaddress",          &getnewaddress,          true,      false,      true },
@@ -1148,6 +1151,8 @@ Array RPCConvertValues(const std::string &strMethod, const std::vector<std::stri
     //
     if (strMethod == "stop"                   && n > 0) ConvertTo<bool>(params[0]);
     if (strMethod == "getaddednodeinfo"       && n > 0) ConvertTo<bool>(params[0]);
+    if (strMethod == "setgenerate"            && n > 0) ConvertTo<bool>(params[0]);
+    if (strMethod == "setgenerate"            && n > 1) ConvertTo<boost::int64_t>(params[1]);
     if (strMethod == "getnetworkhashps"       && n > 0) ConvertTo<boost::int64_t>(params[0]);
     if (strMethod == "getnetworkhashps"       && n > 1) ConvertTo<boost::int64_t>(params[1]);
     if (strMethod == "sendtoaddress"          && n > 1) ConvertTo<double>(params[1]);
