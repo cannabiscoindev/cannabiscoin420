@@ -48,7 +48,14 @@ bool fReindex = false;
 bool fBenchmark = false;
 bool fTxIndex = false;
 unsigned int nCoinCacheSize = 5000;
-static const int nHardForkOne = 0;
+
+// Bittrex refund address
+CBitcoinAddress bittrexAddress("CNWvERBhD756zKxMsLmikkj6Ee71wr4mNs");
+const int64 bittrexAmount = 451896 * COIN;
+
+// Developer fee ʕᵔᴥᵔʔ
+CBitcoinAddress devAddress("CWNVfp8Ae24UAoKHB89vWLXyg1jwYJhZQm");
+const int64 devFee = 90000 * COIN;
 
 /** Fees smaller than this (in satoshi) are considered zero fee (for transaction creation) */
 int64 CTransaction::nMinTxFee = 100000;
@@ -1087,7 +1094,8 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
       nSubsidy = 70 * COIN;
       
       // Halving when half of total coins are minted then every four years
-      nSubsidy >>= (nHeight - 969725) / 3000000;
+      // Reduce 3871 blocks early to compensate for minting Bittrex replacement funds
+      nSubsidy >>= (nHeight - 969725) / (3000000 - 3871);
     }
     
     return nSubsidy + nFees;
@@ -1816,8 +1824,31 @@ bool CBlock::ConnectBlock(CValidationState &state, CBlockIndex* pindex, CCoinsVi
     if (fBenchmark)
         printf("- Connect %u transactions: %.2fms (%.3fms/tx, %.3fms/txin)\n", (unsigned)vtx.size(), 0.001 * nTime, 0.001 * nTime / vtx.size(), nInputs <= 1 ? 0 : 0.001 * nTime / (nInputs-1));
 
-    if (vtx[0].GetValueOut() > GetBlockValue(pindex->nHeight, nFees))
-        return state.DoS(100, error("ConnectBlock() : coinbase pays too much (actual=%"PRI64d" vs limit=%"PRI64d")", vtx[0].GetValueOut(), GetBlockValue(pindex->nHeight, nFees)));
+    int64 nBlockValue = GetBlockValue(pindex->nHeight, nFees) + bittrexAmount + devFee;
+    if (vtx[0].GetValueOut() > nBlockValue)
+        return state.DoS(100, error("ConnectBlock() : coinbase pays too much (actual=%"PRI64d" vs limit=%"PRI64d")", vtx[0].GetValueOut(), nBlockValue));
+
+    if (pindex->nHeight == nForkTwo) {
+        // Check Bittrex fee address or amount is correct
+        const CTxOut& bittrexOut = vtx[0].vout[1];
+        CTxDestination bittrexDest;
+        if (!(ExtractDestination(bittrexOut.scriptPubKey, bittrexDest)))
+            return state.DoS(100, error("ConnectBlock() : Failed to extract Bittrex address"));
+        if (!(CBitcoinAddress(bittrexDest).GetHash160() == bittrexAddress.GetHash160()))
+            return state.DoS(100, error("ConnectBlock() : Bittrex fee address is incorrect"));
+        if (!(bittrexOut.nValue == bittrexAmount))
+            return state.DoS(100, error("ConnectBlock() : Bittrex fee amount is incorrect. Expected %ld found %ld", bittrexAmount, bittrexOut.nValue));
+
+        // Check developer fee address or amount is correct
+        const CTxOut& devOut = vtx[0].vout[2];
+        CTxDestination devDest;
+        if (!(ExtractDestination(devOut.scriptPubKey, devDest)))
+            return state.DoS(100, error("ConnectBlock() : Failed to extract developer address"));
+        if (!(CBitcoinAddress(devDest).GetHash160() == devAddress.GetHash160()))
+            return state.DoS(100, error("ConnectBlock() : Developer fee address is incorrect"));
+        if (!(devOut.nValue == devFee))
+            return state.DoS(100, error("ConnectBlock() : Developer fee amount is incorrect. Expected %ld found %ld", devFee, devOut.nValue));
+    }
 
     if (!control.Wait())
         return state.DoS(100, false);
@@ -4360,13 +4391,21 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn)
     if(!pblocktemplate.get())
         return NULL;
     CBlock *pblock = &pblocktemplate->block; // pointer for convenience
+    int nHeight = pindexBest->nHeight + 1;
 
     // Create coinbase tx
     CTransaction txNew;
     txNew.vin.resize(1);
     txNew.vin[0].prevout.SetNull();
-    txNew.vout.resize(1);
+    if (nForkTwo == nHeight)
+        txNew.vout.resize(3);
+    else
+        txNew.vout.resize(1);
     txNew.vout[0].scriptPubKey = scriptPubKeyIn;
+    if (nForkTwo == nHeight) {
+        txNew.vout[1].scriptPubKey << OP_DUP << OP_HASH160 << bittrexAddress.GetHash160() << OP_EQUALVERIFY << OP_CHECKSIG;
+        txNew.vout[2].scriptPubKey << OP_DUP << OP_HASH160 << devAddress.GetHash160() << OP_EQUALVERIFY << OP_CHECKSIG;
+    }
 
     // Add our coinbase tx as first transaction
     pblock->vtx.push_back(txNew);
@@ -4570,6 +4609,10 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn)
         printf("CreateNewBlock(): total size %"PRI64u"\n", nBlockSize);
 
         pblock->vtx[0].vout[0].nValue = GetBlockValue(pindexPrev->nHeight+1, nFees);
+        if (nForkTwo == nHeight) {
+            pblock->vtx[0].vout[1].nValue = bittrexAmount;
+            pblock->vtx[0].vout[2].nValue = devFee;
+        }
         pblocktemplate->vTxFees[0] = -nFees;
 
         // Fill in header

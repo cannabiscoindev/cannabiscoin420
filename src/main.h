@@ -74,6 +74,7 @@ static const int fHaveUPnP = false;
 
 // Hard fork data
 const int nForkOne = 2282000;
+const int nForkTwo = 4000000;
 
 extern CScript COINBASE_FLAGS;
 extern CCriticalSection cs_main;

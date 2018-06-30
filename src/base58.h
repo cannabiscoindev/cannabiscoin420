@@ -388,6 +388,14 @@ public:
         default: return false;
         }
     }
+
+    uint160 GetHash160() const
+    {
+        assert(vchData.size() == 20);
+        uint160 hash160;
+        memcpy(&hash160, &vchData[0], 20);
+        return hash160;
+    }
 };
 
 bool inline CBitcoinAddressVisitor::operator()(const CKeyID &id) const         { return addr->Set(id); }
