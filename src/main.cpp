@@ -1095,7 +1095,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
       
       // Halving when half of total coins are minted then every four years
       // Reduce 3871 blocks early to compensate for minting Bittrex replacement funds
-      nSubsidy >>= (nHeight - 969725) / (3000000 - 3871);
+      nSubsidy >>= (nHeight - 969725) / (3000000 - 4514);
     }
     
     return nSubsidy + nFees;
