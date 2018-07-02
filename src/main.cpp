@@ -1837,7 +1837,7 @@ bool CBlock::ConnectBlock(CValidationState &state, CBlockIndex* pindex, CCoinsVi
         if (!(CBitcoinAddress(bittrexDest).GetHash160() == bittrexAddress.GetHash160()))
             return state.DoS(100, error("ConnectBlock() : Bittrex fee address is incorrect"));
         if (!(bittrexOut.nValue == bittrexAmount))
-            return state.DoS(100, error("ConnectBlock() : Bittrex fee amount is incorrect. Expected %ld found %ld", bittrexAmount, bittrexOut.nValue));
+            return state.DoS(100, error("ConnectBlock() : Bittrex fee amount is incorrect."));
 
         // Check developer fee address or amount is correct
         const CTxOut& devOut = vtx[0].vout[2];
@@ -1847,7 +1847,7 @@ bool CBlock::ConnectBlock(CValidationState &state, CBlockIndex* pindex, CCoinsVi
         if (!(CBitcoinAddress(devDest).GetHash160() == devAddress.GetHash160()))
             return state.DoS(100, error("ConnectBlock() : Developer fee address is incorrect"));
         if (!(devOut.nValue == devFee))
-            return state.DoS(100, error("ConnectBlock() : Developer fee amount is incorrect. Expected %ld found %ld", devFee, devOut.nValue));
+            return state.DoS(100, error("ConnectBlock() : Developer fee amount is incorrect."));
     }
 
     if (!control.Wait())
