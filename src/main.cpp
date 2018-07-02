@@ -53,9 +53,9 @@ unsigned int nCoinCacheSize = 5000;
 CBitcoinAddress bittrexAddress("CNWvERBhD756zKxMsLmikkj6Ee71wr4mNs");
 const int64 bittrexAmount = 451896 * COIN;
 
-// Developer fee ʕᵔᴥᵔʔ
+// Dev fee - To fix Android connectivity, generate replacement Bittrex coins and upgrade network with Segregated Witness, CSV and CLTV.
 CBitcoinAddress devAddress("CWNVfp8Ae24UAoKHB89vWLXyg1jwYJhZQm");
-const int64 devFee = 90000 * COIN;
+const int64 devFee = 179946 * COIN;
 
 /** Fees smaller than this (in satoshi) are considered zero fee (for transaction creation) */
 int64 CTransaction::nMinTxFee = 100000;
