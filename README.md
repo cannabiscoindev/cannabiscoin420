@@ -1,6 +1,15 @@
-#### HARDFORK BLOCK 2,282,000
+## v0.8.9.0 HARDFORK BLOCK 3,030,000
+* Generate 631,842 extra coins on block 3,030,000 for the two items below.
+  * 451,896 coins to reimburse Bittrex for coins lost in 51% attack. ACP now enabled to prevent future attacks.
+  * 179,946 coins to cover dev costs for coding this hard fork in this wallet and Android wallet, fixing sync issue in Android wallet and upgrading the Cannabiscoin source code from the Bitcoin 0.8 codebase to the Bitcoin 0.13 codebase to include Segregated Witness, CheckLockTimeVerify and CheckSequenceVerify. 0.13 will greatly improve the performance of this wallet and overall user experience.
 
-Inflation model is broken and the total supply of 420 million coins was never going to be reached. Coin reward at the current height of 2,214,686 is 0.00010013 CANN with a total supply of 91,859,219 CANN, with a Bitcoin inflation model of halving every 4 years when half the remaining supply is reached the current reward would be 70 coins and the total supply 155,028,020 CANN. As the coin reward is so low it is hard to attract miners as the network is not mature enough yet for the mining reward to be incentive enough. This hard fork will set CannabisCoin to a Bitcoin style inflation model with 70 coins a block until half the coin supply is reached. The coin maturity will also be set to 100 instead of 30 which it is right now, coin maturity is the number of new blocks needed before newly minted coins can be spent, if this is to low then natural reorganisations may result in loss of transactions.
+### Other changes in 0.8.9.0
+* Move halving slightly nearer to compensate for the extra coins and maintain maximum of 420 million coins.
+* Add internal miner, same as the Bitcoin 0.8 internal miner update for X11.
+* Set client name on the network as Cannabiscoin, not the default Satoshi.
+* Fix for building with newer version of UPNP library. 
+
+[GitHub 0.8.9.0 release and downloads page](https://github.com/cannabiscoindev/cannabiscoin420/releases)
 
 What is CannabisCoin?
 ---------------------
