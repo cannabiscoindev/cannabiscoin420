@@ -1721,7 +1721,7 @@ bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex, const Consensus
 
 CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
 {
-    int64 nSubsidy = 420 * COIN;
+    int64_t nSubsidy = 420 * COIN;
 
     if (nHeight == 1) {
        nSubsidy = 21882000 * COIN;
@@ -1731,7 +1731,16 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
        return nSubsidy;
     }
 
-    nSubsidy >>= (nHeight / 100000);
+    if (nHeight < consensusParams.nForkOne) {
+      nSubsidy >>= (nHeight / 100000);
+    } else {
+      // Hard fork one. Fix inflation model. 70 coins per block.
+      nSubsidy = 70 * COIN;
+      
+      // Halving when half of total coins are minted then every four years
+      // Reduce 4514 blocks early to compensate for minting Bittrex replacement funds
+      nSubsidy >>= (nHeight - 969725) / (consensusParams.nSubsidyHalvingInterval - 4514);
+    }
 
     return nSubsidy;
 }
@@ -1962,7 +1971,7 @@ int GetSpendHeight(const CCoinsViewCache& inputs)
 }
 
 namespace Consensus {
-bool CheckTxInputs(const CTransaction& tx, CValidationState& state, const CCoinsViewCache& inputs, int nSpendHeight)
+bool CheckTxInputs(const CTransaction& tx, CValidationState& state, const CCoinsViewCache& inputs, int nSpendHeight, int nForkOne)
 {
         // This doesn't trigger the DoS code on purpose; if it did, it would make it easier
         // for an attacker to attempt to split the network.
@@ -1979,10 +1988,13 @@ bool CheckTxInputs(const CTransaction& tx, CValidationState& state, const CCoins
 
             // If prev is coinbase, check that it's matured
             if (coins->IsCoinBase()) {
-                if (nSpendHeight - coins->nHeight < COINBASE_MATURITY)
-                    return state.Invalid(false,
-                        REJECT_INVALID, "bad-txns-premature-spend-of-coinbase",
-                        strprintf("tried to spend coinbase at depth %d", nSpendHeight - coins->nHeight));
+                if (chainActive.Height() < nForkOne) {
+                    if (nSpendHeight - coins->nHeight < COINBASE_MATURITY)
+                        return state.Invalid(false, REJECT_INVALID, "bad-txns-premature-spend-of-coinbase", strprintf("tried to spend coinbase at depth %d", nSpendHeight - coins->nHeight));
+                } else {
+                    if (nSpendHeight - coins->nHeight < COINBASE_MATURITY_FORKONE)
+                        return state.Invalid(false, REJECT_INVALID, "bad-txns-premature-spend-of-coinbase", strprintf("tried to spend coinbase at depth %d", nSpendHeight - coins->nHeight));
+                }
             }
 
             // Check for negative or overflow input values
@@ -2011,7 +2023,7 @@ bool CheckInputs(const CTransaction& tx, CValidationState &state, const CCoinsVi
 {
     if (!tx.IsCoinBase())
     {
-        if (!Consensus::CheckTxInputs(tx, state, inputs, GetSpendHeight(inputs)))
+        if (!Consensus::CheckTxInputs(tx, state, inputs, GetSpendHeight(inputs), Params().GetConsensus().nForkOne))
             return false;
 
         if (pvChecks)

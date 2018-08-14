@@ -3619,7 +3619,10 @@ int CMerkleTx::GetBlocksToMaturity() const
 {
     if (!IsCoinBase())
         return 0;
-    return max(0, (COINBASE_MATURITY+1) - GetDepthInMainChain());
+    if (chainActive.Height() < Params().GetConsensus().nForkOne)
+        return max(0, (COINBASE_MATURITY+1) - GetDepthInMainChain());
+    else
+        return max(0, (COINBASE_MATURITY_FORKONE+1) - GetDepthInMainChain());
 }
 
 
