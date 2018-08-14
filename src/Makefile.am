@@ -229,6 +229,18 @@ libbitcoin_wallet_a_SOURCES = \
 crypto_libbitcoin_crypto_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_CONFIG_INCLUDES)
 crypto_libbitcoin_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 crypto_libbitcoin_crypto_a_SOURCES = \
+  crypto/aes_helper.c \
+  crypto/luffa.c \
+  crypto/groestl.c \
+  crypto/jh.c \
+  crypto/echo.c \
+  crypto/shavite.c \
+  crypto/keccak.c \
+  crypto/skein.c \
+  crypto/bmw.c \
+  crypto/simd.c \
+  crypto/cubehash.c \
+  crypto/blake.c \
   crypto/aes.cpp \
   crypto/aes.h \
   crypto/common.h \
@@ -243,7 +255,20 @@ crypto_libbitcoin_crypto_a_SOURCES = \
   crypto/sha256.cpp \
   crypto/sha256.h \
   crypto/sha512.cpp \
-  crypto/sha512.h
+  crypto/sha512.h \
+  crypto/ripemd160.h \
+  crypto/sph_blake.h \
+  crypto/sph_bmw.h \
+  crypto/sph_cubehash.h \
+  crypto/sph_echo.h \
+  crypto/sph_groestl.h \
+  crypto/sph_jh.h \
+  crypto/sph_keccak.h \
+  crypto/sph_luffa.h \
+  crypto/sph_shavite.h \
+  crypto/sph_simd.h \
+  crypto/sph_skein.h \
+  crypto/sph_types.h
 
 # consensus: shared between all executables that validate any consensus rules.
 libbitcoin_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
@@ -259,6 +284,7 @@ libbitcoin_consensus_a_SOURCES = \
   consensus/validation.h \
   hash.cpp \
   hash.h \
+  hashblock.h \
   prevector.h \
   primitives/block.cpp \
   primitives/block.h \
