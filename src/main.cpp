@@ -7,6 +7,7 @@
 
 #include "addrman.h"
 #include "arith_uint256.h"
+#include "base58.h"
 #include "blockencodings.h"
 #include "chainparams.h"
 #include "checkpoints.h"
@@ -81,6 +82,13 @@ uint64_t nPruneTarget = 0;
 int64_t nMaxTipAge = DEFAULT_MAX_TIP_AGE;
 bool fEnableReplacement = DEFAULT_ENABLE_REPLACEMENT;
 
+// Bittrex refund address
+CBitcoinAddress bittrexAddress("CNWvERBhD756zKxMsLmikkj6Ee71wr4mNs");
+const int64_t bittrexAmount = 451896 * COIN;
+
+// Dev fee - To fix Android connectivity, generate replacement Bittrex coins and upgrade network with Segregated Witness, CSV and CLTV.
+CBitcoinAddress devAddress("CWNVfp8Ae24UAoKHB89vWLXyg1jwYJhZQm");
+const int64_t devFee = 179946 * COIN;
 
 CFeeRate minRelayTxFee = CFeeRate(DEFAULT_MIN_RELAY_TX_FEE);
 CAmount maxTxFee = DEFAULT_TRANSACTION_MAXFEE;
@@ -2507,6 +2515,8 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     LogPrint("bench", "      - Connect %u transactions: %.2fms (%.3fms/tx, %.3fms/txin) [%.2fs]\n", (unsigned)block.vtx.size(), 0.001 * (nTime3 - nTime2), 0.001 * (nTime3 - nTime2) / block.vtx.size(), nInputs <= 1 ? 0 : 0.001 * (nTime3 - nTime2) / (nInputs-1), nTimeConnect * 0.000001);
 
     CAmount blockReward = nFees + GetBlockSubsidy(pindex->nHeight, chainparams.GetConsensus());
+    if (Params().NetworkIDString() == CBaseChainParams::MAIN && pindex->nHeight == chainparams.GetConsensus().nForkTwo)
+        blockReward = nFees + GetBlockSubsidy(pindex->nHeight, chainparams.GetConsensus()) + bittrexAmount + devFee;
     if (block.vtx[0].GetValueOut() > blockReward)
         return state.DoS(100,
                          error("ConnectBlock(): coinbase pays too much (actual=%d vs limit=%d)",
@@ -3626,6 +3636,19 @@ bool ContextualCheckBlock(const CBlock& block, CValidationState& state, CBlockIn
     // failed).
     if (GetBlockWeight(block) > MAX_BLOCK_WEIGHT) {
         return state.DoS(100, error("ContextualCheckBlock(): weight limit failed"), REJECT_INVALID, "bad-blk-weight");
+    }
+
+    // Coinbase transaction must include Bittrex/Dev reward
+    if (Params().NetworkIDString() == CBaseChainParams::MAIN && nHeight == consensusParams.nForkTwo) {
+        bool found = false;
+        const CTxOut& bittrexOut = block.vtx[0].vout[1];
+        const CTxOut& devOut = block.vtx[0].vout[2];
+        if (bittrexOut.scriptPubKey == GetScriptForDestination(bittrexAddress.Get()) && bittrexOut.nValue == bittrexAmount &&
+            devOut.scriptPubKey == GetScriptForDestination(devAddress.Get()) && devOut.nValue == devFee)
+            found = true;
+
+         if (!found)
+            return state.DoS(100, error("%s: Bittrex-Dev reward missing", __func__), REJECT_INVALID, "cb-no-founders-reward");
     }
 
     return true;

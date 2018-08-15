@@ -61,6 +61,7 @@ struct Params {
     uint256 nMinimumChainWork;
     /** Hard forks */
     int nForkOne;
+    int nForkTwo;
 };
 } // namespace Consensus
 
