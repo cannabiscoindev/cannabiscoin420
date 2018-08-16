@@ -158,16 +158,16 @@
         <translation>Otvori &amp;URI...</translation>
     </message>
     <message>
-        <source>Send coins to a Bitcoin address</source>
-        <translation>Pošalji novčiće na Bitcoin adresu</translation>
+        <source>Send coins to a CannabisCoin address</source>
+        <translation>Pošalji novčiće na CannabisCoin adresu</translation>
     </message>
     <message>
         <source>&amp;Verify message...</source>
         <translation>&amp;Proveri poruku...</translation>
     </message>
     <message>
-        <source>Bitcoin</source>
-        <translation>Bitcoin</translation>
+        <source>CannabisCoin</source>
+        <translation>CannabisCoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -412,8 +412,8 @@
 <context>
     <name>bitcoin-core</name>
     <message>
-        <source>Bitcoin Core</source>
-        <translation>Bitcoin Core</translation>
+        <source>CannabisCoin Core</source>
+        <translation>CannabisCoin Core</translation>
     </message>
     <message>
         <source>Information</source>
