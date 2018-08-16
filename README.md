@@ -1,81 +1,50 @@
-Bitcoin Core integration/staging tree
-=====================================
+## HARDFORK BLOCK 3,030,000
+* Generate 631,842 extra coins on block 3,030,000 for the two items below.
+  * 451,896 coins to reimburse Bittrex for coins lost in 51% attack. ACP now enabled to prevent future attacks.
+  * 179,946 coins to cover dev costs for coding this hard fork in this wallet and Android wallet, fixing sync issue in Android wallet and upgrading the Cannabiscoin source code from the Bitcoin 0.8 codebase to the Bitcoin 0.13 codebase to include Segregated Witness, CheckLockTimeVerify and CheckSequenceVerify. 0.13 will greatly improve the performance of this wallet and overall user experience.
 
-[![Build Status](https://travis-ci.org/bitcoin/bitcoin.svg?branch=master)](https://travis-ci.org/bitcoin/bitcoin)
+[CannabisCoin releases and downloads page](https://github.com/cannabiscoindev/cannabiscoin420/releases)
 
-https://bitcoincore.org
+What is CannabisCoin?
+---------------------
 
-What is Bitcoin?
-----------------
+CannabisCoin (CANN) is a peer-to-peer Internet digital currency that enables instant payments to anyone in the world.
 
-Bitcoin is an experimental digital currency that enables instant payments to
-anyone, anywhere in the world. Bitcoin uses peer-to-peer technology to operate
-with no central authority: managing transactions and issuing money are carried
-out collectively by the network. Bitcoin Core is the name of open source
-software which enables the use of this currency.
+It is based on the Bitcoin protocol but differs from Bitcoin in that it can be efficiently mined with consumer-grade hardware.
 
-For more information, as well as an immediately useable, binary version of
-the Bitcoin Core software, see https://bitcoin.org/en/download, or read the
-[original whitepaper](https://bitcoincore.org/bitcoin.pdf).
+CannabisCoin is the payment solution for Marijuana dispensaries, retailers and merchants.
 
-License
--------
+CannabisCoin crypto currency is backed by Marijuana where it is accepted.
 
-Bitcoin Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
-information or see https://opensource.org/licenses/MIT.
+What does CannabisCoin represent?
+----------------------------------
 
-Development Process
--------------------
+Put an end to Cannabis / Marijuana prohibition, allow "We the people" freedom of choice and personal privacy!  
+Legalize Marijuana!
 
-The `master` branch is regularly built and tested, but is not guaranteed to be
-completely stable. [Tags](https://github.com/bitcoin/bitcoin/tags) are created
-regularly to indicate new official, stable release versions of Bitcoin Core.
+Cannabis / Marijuana Facts
+--------------------------
+20 states in the US have legalized cannabis for medical purposes. Colorado and Washington state also permit recreational use of marijuana.
 
-The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).
+There are two very distinct groups of marijuana strains. One is cannabis; the other is hemp.
 
-The developer [mailing list](https://lists.linuxfoundation.org/mailman/listinfo/bitcoin-dev)
-should be used to discuss complicated or controversial changes before working
-on a patch set.
+Cannabis is potent medicine courtesy of high amounts of CBD, medicinal terpenes, and flavonoids. It also contains varying amounts of THC. The higher the THC, the more pronounced its psychoactive effects
 
-Developer IRC can be found on Freenode at #bitcoin-core-dev.
+Cannabis Coin Details:
+----------------------
+Algorithm = X11  
+Maximum number of produced Cannabis Coins = 420,000,000 Coins  
+Cannabis Coin CANN rewards per block = Originally 420 coins but the inflation model reduced reward. Hard fork at block 2,282,000 will change the reward to 70 Coins.  
+Target per block = 42 Seconds  
+Halving = Every 100,000 Blocks before hard fork. Halving after fork happens when half of all coins produced at block 3,969,725, then every 3 million blocks which is roughly every 4 years.  
+Wallet Addresses will start with "C" for CANNABIS!  
+Ports:  
+RPC Port 39347  
+P2P Port 39348  
 
-Testing
--------
-
-Testing and code review is the bottleneck for development; we get more pull
-requests than we can review and test on short notice. Please be patient and help out by testing
-other people's pull requests, and remember this is a security-critical project where any mistake might cost people
-lots of money.
-
-### Automated Testing
-
-Developers are strongly encouraged to write [unit tests](/doc/unit-tests.md) for new code, and to
-submit new unit tests for old code. Unit tests can be compiled and run
-(assuming they weren't disabled in configure) with: `make check`
-
-There are also [regression and integration tests](/qa) of the RPC interface, written
-in Python, that are run automatically on the build server.
-These tests can be run (if the [test dependencies](/qa) are installed) with: `qa/pull-tester/rpc-tests.py`
-
-The Travis CI system makes sure that every pull request is built for Windows, Linux, and OS X, and that unit/sanity tests are run automatically.
-
-### Manual Quality Assurance (QA) Testing
-
-Changes should be tested by somebody other than the developer who wrote the
-code. This is especially important for large or high-risk changes. It is useful
-to add a test plan to the pull request description if testing the changes is
-not straightforward.
-
-Translations
-------------
-
-Changes to translations as well as new translations can be submitted to
-[Bitcoin Core's Transifex page](https://www.transifex.com/projects/p/bitcoin/).
-
-Translations are periodically pulled from Transifex and merged into the git repository. See the
-[translation process](doc/translation_process.md) for details on how this works.
-
-**Important**: We do not accept translation changes as GitHub pull requests because the next
-pull from Transifex would automatically overwrite them again.
-
-Translators should also subscribe to the [mailing list](https://groups.google.com/forum/#!forum/bitcoin-translators).
+Very IMPORTANT Official Cannabis Coin links are here:  
+CannabisCoin Facebook Page https://www.facebook.com/mmjcoin  
+CannabisCoin Twitter Page https://twitter.com/CannabisCoins  
+CannabisCoin Exchange https://bittrex.com/Market/Index?MarketName=BTC-CANN  
+CannabisCoin on Youtube http://www.youtube.com/user/CannabisCoin  
+Reddit subreddit http://www.reddit.com/r/cannabiscoins  
