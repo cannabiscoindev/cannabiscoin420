@@ -66,6 +66,7 @@ public:
         consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 24 * 60 * 60; // one day
         consensus.nPowTargetSpacing = 42;
+        consensus.checkpointPubKey = "048058d4b29ae51a2b7fe4276c7cc32b2c4353920af721d12c4b5e6ec7aff8c4d8bc9873ce066f8bbf86d5bb835600885c1a2a7a376496c7099afae5146932562e";
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 21600; // 75% of 28800
@@ -158,6 +159,7 @@ public:
         consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 24 * 60 * 60; // one day
         consensus.nPowTargetSpacing = 42;
+        consensus.checkpointPubKey = "048dc3106fba17f0bcefb289f14a8e248e210ae6f96cc2e512b84ba88f9bc08669078a9e4d0144d6573d035a62d84224f380427d2cbdb763da56aeac6cf50b13e3";
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 2160;
@@ -238,6 +240,7 @@ public:
         consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 24 * 60 * 60; // one day
         consensus.nPowTargetSpacing = 42;
+        consensus.checkpointPubKey = "048dc3106fba17f0bcefb289f14a8e248e210ae6f96cc2e512b84ba88f9bc08669078a9e4d0144d6573d035a62d84224f380427d2cbdb763da56aeac6cf50b13e3";
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = true;
         consensus.nRuleChangeActivationThreshold = 108; // 75% for testchains

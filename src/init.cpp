@@ -34,6 +34,7 @@
 #include "torcontrol.h"
 #include "ui_interface.h"
 #include "util.h"
+#include "checkpointsync.h"
 #include "utilmoneystr.h"
 #include "validationinterface.h"
 #ifdef ENABLE_WALLET
@@ -1034,6 +1035,12 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
             }
         }
     }
+	
+	if (mapArgs.count("-checkpointkey")) // ppcoin: checkpoint master priv key
+	{
+		if (!SetCheckpointPrivKey(GetArg("-checkpointkey", "")))
+			return InitError(_("Unable to sign checkpoint, wrong checkpointkey?"));
+	}
 
     // ********************************************************* Step 4: application initialization: dir lock, daemonize, pidfile, debug log
 
@@ -1358,6 +1365,12 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
                 if (fHavePruned && GetArg("-checkblocks", DEFAULT_CHECKBLOCKS) > MIN_BLOCKS_TO_KEEP) {
                     LogPrintf("Prune: pruned datadir may not have more than %d blocks; only checking available blocks",
                         MIN_BLOCKS_TO_KEEP);
+                }
+
+                uiInterface.InitMessage(_("Checking ACP ..."));
+                if (!CheckCheckpointPubKey()) {
+                    strLoadError = _("Checking ACP pubkey failed");
+                    break;
                 }
 
                 {
