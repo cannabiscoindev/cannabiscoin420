@@ -2761,9 +2761,6 @@ void static UpdateTip(CBlockIndex *pindexNew, const CChainParams& chainParams) {
     if (!warningMessages.empty())
         LogPrintf(" warning='%s'", boost::algorithm::join(warningMessages, ", "));
     LogPrintf("\n");
-
-    if (chainActive.Tip()->pprev)
-        CheckSyncCheckpoint(chainActive.Tip()->GetBlockHash(), chainActive.Tip()->pprev);
 }
 
 /** Disconnect chainActive's tip. You probably want to call mempool.removeForReorg and manually re-limit mempool size after this, with cs_main held. */
@@ -3730,9 +3727,12 @@ static bool AcceptBlock(const CBlock& block, CValidationState& state, const CCha
     }
 
     // Check that the block satisfies synchronized checkpoint
-    if (!CheckSyncCheckpoint(block.GetHash(), pindex->pprev))
-        return state.Invalid(error("%s : rejected by synchronized checkpoint", __func__),
-                             REJECT_OBSOLETE, "bad-version");
+    if (!IsInitialBlockDownload() && !CheckSyncCheckpoint(pindex))
+    {
+        pindex->nStatus |= BLOCK_FAILED_VALID;
+        setDirtyBlockIndex.insert(pindex);
+        return error("%s: rejected by synchronized checkpoint", __func__);
+    }
 
     int nHeight = pindex->nHeight;
 
@@ -3756,7 +3756,8 @@ static bool AcceptBlock(const CBlock& block, CValidationState& state, const CCha
     if (fCheckForPruning)
         FlushStateToDisk(state, FLUSH_STATE_NONE); // we just allocated more disk space for block files
 
-    AcceptPendingSyncCheckpoint();
+    if (!IsInitialBlockDownload())
+        AcceptPendingSyncCheckpoint();
 
     return true;
 }
@@ -3794,17 +3795,13 @@ bool ProcessNewBlock(CValidationState& state, const CChainParams& chainparams, C
             return error("%s: AcceptBlock FAILED", __func__);
     }
 
-	// Ask for pending sync-checkpoint if any
-    if (!IsInitialBlockDownload())
-        AskForPendingSyncCheckpoint(pfrom);
-
     NotifyHeaderTip();
 
     if (!ActivateBestChain(state, chainparams, pblock))
         return error("%s: ActivateBestChain failed", __func__);
 	
 	// If responsible for sync-checkpoint send it
-    if (pfrom && !CSyncCheckpoint::strMasterPrivKey.empty() && (int)GetArg("-checkpointdepth", -1) >= 0)
+    if (!CSyncCheckpoint::strMasterPrivKey.empty())
     	SendSyncCheckpoint(AutoSelectSyncCheckpoint());
 
     return true;
@@ -5111,7 +5108,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 		
 		// Relay sync-checkpoint
 		{
-            LOCK(cs_hashSyncCheckpoint);
+            LOCK(cs_main);
             if (!checkpointMessage.IsNull())
                 checkpointMessage.RelayTo(pfrom);
         }
@@ -5130,9 +5127,6 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         int64_t nTimeOffset = nTime - GetTime();
         pfrom->nTimeOffset = nTimeOffset;
         AddTimeData(pfrom->addr, nTimeOffset);
-
-        if (!IsInitialBlockDownload())
-            AskForPendingSyncCheckpoint(pfrom);
     }
 
 
@@ -6242,7 +6236,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
     {
         CSyncCheckpoint checkpoint;
         vRecv >> checkpoint;
-        if (checkpoint.ProcessSyncCheckpoint(pfrom))
+        if (checkpoint.ProcessSyncCheckpoint())
         {
             // Relay
             pfrom->hashCheckpointKnown = checkpoint.hashCheckpoint;
