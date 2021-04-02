@@ -1035,12 +1035,6 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
             }
         }
     }
-	
-	if (mapArgs.count("-checkpointkey")) // ppcoin: checkpoint master priv key
-	{
-		if (!SetCheckpointPrivKey(GetArg("-checkpointkey", "")))
-			return InitError(_("Unable to sign checkpoint, wrong checkpointkey?"));
-	}
 
     // ********************************************************* Step 4: application initialization: dir lock, daemonize, pidfile, debug log
 
@@ -1051,6 +1045,12 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
     // Sanity check
     if (!InitSanityCheck())
         return InitError(strprintf(_("Initialization sanity check failed. %s is shutting down."), _(PACKAGE_NAME)));
+
+    if (mapArgs.count("-checkpointkey")) // ppcoin: checkpoint master priv key
+    {
+        if (!SetCheckpointPrivKey(GetArg("-checkpointkey", "")))
+            return InitError(_("Unable to sign checkpoint, wrong checkpointkey?"));
+    }
 
     std::string strDataDir = GetDataDir().string();
 
@@ -1367,14 +1367,14 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
                         MIN_BLOCKS_TO_KEEP);
                 }
 
-                uiInterface.InitMessage(_("Checking ACP ..."));
-                if (!CheckCheckpointPubKey()) {
-                    strLoadError = _("Checking ACP pubkey failed");
-                    break;
-                }
-
                 {
                     LOCK(cs_main);
+                    uiInterface.InitMessage(_("Checking ACP..."));
+                    if (!CheckCheckpointPubKey()) {
+                        strLoadError = _("Checking ACP pubkey failed");
+                        break;
+                    }
+
                     CBlockIndex* tip = chainActive.Tip();
                     if (tip && tip->nTime > GetAdjustedTime() + 2 * 60 * 60) {
                         strLoadError = _("The block database contains a block which appears to be from the future. "
